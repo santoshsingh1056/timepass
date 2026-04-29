@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden; /* Prevents scrollbars when button flies to the edge */
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+            position: relative;
+            z-index: 10;
+            max-width: 90%;
+        }
+        h1 {
+            color: #ff4757;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            position: relative;
+        }
+        button {
+            font-size: 1.3rem;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        #yesBtn {
+            background-color: #2ed573;
+            color: white;
+        }
+        #yesBtn:hover {
+            transform: scale(1.1);
+            background-color: #27ae60;
+        }
+        #noBtn {
+            background-color: #ff4757;
+            color: white;
+            position: relative; /* Kept relative initially so it sits nicely next to YES */
+        }
+        #successDiv {
+            display: none;
+            text-align: center;
+        }
+        #successDiv h1 {
+            color: #2ed573;
+            margin-bottom: 20px;
+        }
+        #successDiv img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="mainContainer">
+        <h1>Will you be my Valentine? 💖</h1>
+        <div class="buttons">
+            <button id="yesBtn">YES</button>
+            <button id="noBtn">NO</button>
+        </div>
+    </div>
+	<div id="successDiv" class="tenor-gif-embed" data-postid="25613358" data-share-method="host" data-aspect-ratio="1.49533" data-width="30%"><a href="https://tenor.com/view/kbc-memes-7crore-meme-7crores-amitabh-bachchan-kbc-dhanrashi-gif-25613358">Kbc Memes 7crore Meme GIF</a>from <a href="https://tenor.com/search/kbc+memes-gifs">Kbc Memes GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+    
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const mainContainer = document.getElementById('mainContainer');
+        const successDiv = document.getElementById('successDiv');
+
+        // Function to move the NO button to a random position
+        const moveButton = () => {
+            // Change position to fixed so it moves relative to the entire screen
+            noBtn.style.position = 'fixed';
+            
+            // Calculate random coordinates keeping the button safely within the screen bounds
+            const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+            const maxY = window.innerHeight - noBtn.offsetHeight - 20;
+            
+            const randomX = Math.max(20, Math.random() * maxX);
+            const randomY = Math.max(20, Math.random() * maxY);
+            
+            noBtn.style.left = `${randomX}px`;
+            noBtn.style.top = `${randomY}px`;
+        };
+
+        // Desktop: Move when the mouse hovers over it
+        noBtn.addEventListener('mouseover', moveButton);
+        
+        // Mobile: Move when they try to tap it (preventing the actual click)
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault(); 
+            moveButton();
+        });
+
+        // Handle the YES button click
+        yesBtn.addEventListener('click', () => {
+            mainContainer.style.display = 'none';
+            successDiv.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
